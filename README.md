@@ -1,4 +1,4 @@
 # AdventOfCode
-Yearly computer puzzles!
+# 3 December
 
-These are the finished programs, meaning all part 2 solutions.
+Go to the problem [a link](https://adventofcode.com/2021/day/3 "Day 3")
