@@ -1,4 +1,6 @@
 # AdventOfCode
-# 2 December
+The puzzle from December 2st.
 
-Go to the problem [a link](https://adventofcode.com/2021/day/2 "Day 2")
+## --- Day 2: Dive! ---
+
+Go to the problem [here](https://adventofcode.com/2021/day/2)!
