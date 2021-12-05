@@ -1,0 +1,22 @@
+C:\Users\flori\source\repos\2 - December\bin\Debug\netcoreapp3.0\2 - December.exe
+C:\Users\flori\source\repos\2 - December\bin\Debug\netcoreapp3.0\2 - December.deps.json
+C:\Users\flori\source\repos\2 - December\bin\Debug\netcoreapp3.0\2 - December.runtimeconfig.json
+C:\Users\flori\source\repos\2 - December\bin\Debug\netcoreapp3.0\2 - December.runtimeconfig.dev.json
+C:\Users\flori\source\repos\2 - December\bin\Debug\netcoreapp3.0\2 - December.dll
+C:\Users\flori\source\repos\2 - December\bin\Debug\netcoreapp3.0\2 - December.pdb
+C:\Users\flori\source\repos\2 - December\obj\Debug\netcoreapp3.0\2 - December.csprojAssemblyReference.cache
+C:\Users\flori\source\repos\2 - December\obj\Debug\netcoreapp3.0\2 - December.AssemblyInfoInputs.cache
+C:\Users\flori\source\repos\2 - December\obj\Debug\netcoreapp3.0\2 - December.AssemblyInfo.cs
+C:\Users\flori\source\repos\2 - December\obj\Debug\netcoreapp3.0\2 - December.dll
+C:\Users\flori\source\repos\2 - December\obj\Debug\netcoreapp3.0\2 - December.pdb
+C:\Users\flori\OneDrive\Bureaublad\eigen projecten\2 - December\bin\Debug\netcoreapp3.0\2 - December.exe
+C:\Users\flori\OneDrive\Bureaublad\eigen projecten\2 - December\bin\Debug\netcoreapp3.0\2 - December.deps.json
+C:\Users\flori\OneDrive\Bureaublad\eigen projecten\2 - December\bin\Debug\netcoreapp3.0\2 - December.runtimeconfig.json
+C:\Users\flori\OneDrive\Bureaublad\eigen projecten\2 - December\bin\Debug\netcoreapp3.0\2 - December.runtimeconfig.dev.json
+C:\Users\flori\OneDrive\Bureaublad\eigen projecten\2 - December\bin\Debug\netcoreapp3.0\2 - December.dll
+C:\Users\flori\OneDrive\Bureaublad\eigen projecten\2 - December\bin\Debug\netcoreapp3.0\2 - December.pdb
+C:\Users\flori\OneDrive\Bureaublad\eigen projecten\2 - December\obj\Debug\netcoreapp3.0\2 - December.csprojAssemblyReference.cache
+C:\Users\flori\OneDrive\Bureaublad\eigen projecten\2 - December\obj\Debug\netcoreapp3.0\2 - December.AssemblyInfoInputs.cache
+C:\Users\flori\OneDrive\Bureaublad\eigen projecten\2 - December\obj\Debug\netcoreapp3.0\2 - December.AssemblyInfo.cs
+C:\Users\flori\OneDrive\Bureaublad\eigen projecten\2 - December\obj\Debug\netcoreapp3.0\2 - December.dll
+C:\Users\flori\OneDrive\Bureaublad\eigen projecten\2 - December\obj\Debug\netcoreapp3.0\2 - December.pdb
