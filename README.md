@@ -1,6 +1,4 @@
-# Advent Of Code 2021
-#### Floris Bos
+# AdventOfCode
+## Empty project
 
-For every day there is a new branch with the solutions. 
-
-Trying to update them to have part 1 and part 2 seperate!
+Start your new day with a fresh command line interface!
