@@ -1,0 +1,65 @@
+D:\Users\Gebruiker\Desktop\School\1- Stocks\obj\Debug\netcoreapp3.1\Stocks.csprojAssemblyReference.cache
+D:\Users\Gebruiker\Desktop\School\1- Stocks\obj\Debug\netcoreapp3.1\Stocks.csproj.CoreCompileInputs.cache
+D:\Users\Gebruiker\Desktop\School\1- Stocks\obj\Debug\netcoreapp3.1\Stocks.AssemblyInfoInputs.cache
+D:\Users\Gebruiker\Desktop\School\1- Stocks\obj\Debug\netcoreapp3.1\Stocks.AssemblyInfo.cs
+D:\Users\Gebruiker\Desktop\School\1- Stocks\bin\Debug\netcoreapp3.1\Stocks.exe
+D:\Users\Gebruiker\Desktop\School\1- Stocks\bin\Debug\netcoreapp3.1\Stocks.deps.json
+D:\Users\Gebruiker\Desktop\School\1- Stocks\bin\Debug\netcoreapp3.1\Stocks.runtimeconfig.json
+D:\Users\Gebruiker\Desktop\School\1- Stocks\bin\Debug\netcoreapp3.1\Stocks.runtimeconfig.dev.json
+D:\Users\Gebruiker\Desktop\School\1- Stocks\bin\Debug\netcoreapp3.1\Stocks.dll
+D:\Users\Gebruiker\Desktop\School\1- Stocks\bin\Debug\netcoreapp3.1\Stocks.pdb
+D:\Users\Gebruiker\Desktop\School\1- Stocks\obj\Debug\netcoreapp3.1\Stocks.dll
+D:\Users\Gebruiker\Desktop\School\1- Stocks\obj\Debug\netcoreapp3.1\Stocks.pdb
+D:\Users\Gebruiker\Desktop\School\1- Stocks\obj\Debug\netcoreapp3.1\Stocks.genruntimeconfig.cache
+D:\Users\Gebruiker\Desktop\School\Algorithmiek\1- Stocks\bin\Debug\netcoreapp3.1\Stocks.exe
+D:\Users\Gebruiker\Desktop\School\Algorithmiek\1- Stocks\bin\Debug\netcoreapp3.1\Stocks.deps.json
+D:\Users\Gebruiker\Desktop\School\Algorithmiek\1- Stocks\bin\Debug\netcoreapp3.1\Stocks.runtimeconfig.json
+D:\Users\Gebruiker\Desktop\School\Algorithmiek\1- Stocks\bin\Debug\netcoreapp3.1\Stocks.runtimeconfig.dev.json
+D:\Users\Gebruiker\Desktop\School\Algorithmiek\1- Stocks\bin\Debug\netcoreapp3.1\Stocks.dll
+D:\Users\Gebruiker\Desktop\School\Algorithmiek\1- Stocks\bin\Debug\netcoreapp3.1\Stocks.pdb
+D:\Users\Gebruiker\Desktop\School\Algorithmiek\1- Stocks\obj\Debug\netcoreapp3.1\Stocks.csprojAssemblyReference.cache
+D:\Users\Gebruiker\Desktop\School\Algorithmiek\1- Stocks\obj\Debug\netcoreapp3.1\Stocks.csproj.CoreCompileInputs.cache
+D:\Users\Gebruiker\Desktop\School\Algorithmiek\1- Stocks\obj\Debug\netcoreapp3.1\Stocks.AssemblyInfoInputs.cache
+D:\Users\Gebruiker\Desktop\School\Algorithmiek\1- Stocks\obj\Debug\netcoreapp3.1\Stocks.AssemblyInfo.cs
+D:\Users\Gebruiker\Desktop\School\Algorithmiek\1- Stocks\obj\Debug\netcoreapp3.1\Stocks.dll
+D:\Users\Gebruiker\Desktop\School\Algorithmiek\1- Stocks\obj\Debug\netcoreapp3.1\Stocks.pdb
+D:\Users\Gebruiker\Desktop\School\Algorithmiek\1- Stocks\obj\Debug\netcoreapp3.1\Stocks.genruntimeconfig.cache
+C:\Users\Gebruiker\Own Project\AdventOfCode\1 december\obj\Debug\netcoreapp3.1\Stocks.csprojAssemblyReference.cache
+C:\Users\Gebruiker\Own Project\AdventOfCode\1 december\obj\Debug\netcoreapp3.1\Stocks.csproj.CoreCompileInputs.cache
+C:\Users\Gebruiker\Own Project\AdventOfCode\1 december\obj\Debug\netcoreapp3.1\Stocks.AssemblyInfoInputs.cache
+C:\Users\Gebruiker\Own Project\AdventOfCode\1 december\obj\Debug\netcoreapp3.1\Stocks.AssemblyInfo.cs
+C:\Users\Gebruiker\Own Project\AdventOfCode\1 december\obj\Debug\netcoreapp3.1\Stocks.dll
+C:\Users\Gebruiker\Own Project\AdventOfCode\1 december\obj\Debug\netcoreapp3.1\Stocks.pdb
+C:\Users\Gebruiker\Own Project\AdventOfCode\1 december\bin\Debug\netcoreapp3.1\Stocks.exe
+C:\Users\Gebruiker\Own Project\AdventOfCode\1 december\bin\Debug\netcoreapp3.1\Stocks.deps.json
+C:\Users\Gebruiker\Own Project\AdventOfCode\1 december\bin\Debug\netcoreapp3.1\Stocks.runtimeconfig.json
+C:\Users\Gebruiker\Own Project\AdventOfCode\1 december\bin\Debug\netcoreapp3.1\Stocks.runtimeconfig.dev.json
+C:\Users\Gebruiker\Own Project\AdventOfCode\1 december\bin\Debug\netcoreapp3.1\Stocks.dll
+C:\Users\Gebruiker\Own Project\AdventOfCode\1 december\bin\Debug\netcoreapp3.1\Stocks.pdb
+C:\Users\Gebruiker\Own Project\AdventOfCode\1 december\obj\Debug\netcoreapp3.1\Stocks.genruntimeconfig.cache
+C:\Users\Gebruiker\Own Project\AdventOfCode\bin\Debug\netcoreapp3.1\Stocks.exe
+C:\Users\Gebruiker\Own Project\AdventOfCode\bin\Debug\netcoreapp3.1\Stocks.deps.json
+C:\Users\Gebruiker\Own Project\AdventOfCode\bin\Debug\netcoreapp3.1\Stocks.runtimeconfig.json
+C:\Users\Gebruiker\Own Project\AdventOfCode\bin\Debug\netcoreapp3.1\Stocks.runtimeconfig.dev.json
+C:\Users\Gebruiker\Own Project\AdventOfCode\bin\Debug\netcoreapp3.1\Stocks.dll
+C:\Users\Gebruiker\Own Project\AdventOfCode\bin\Debug\netcoreapp3.1\Stocks.pdb
+C:\Users\Gebruiker\Own Project\AdventOfCode\obj\Debug\netcoreapp3.1\Stocks.csprojAssemblyReference.cache
+C:\Users\Gebruiker\Own Project\AdventOfCode\obj\Debug\netcoreapp3.1\Stocks.csproj.CoreCompileInputs.cache
+C:\Users\Gebruiker\Own Project\AdventOfCode\obj\Debug\netcoreapp3.1\Stocks.AssemblyInfoInputs.cache
+C:\Users\Gebruiker\Own Project\AdventOfCode\obj\Debug\netcoreapp3.1\Stocks.AssemblyInfo.cs
+C:\Users\Gebruiker\Own Project\AdventOfCode\obj\Debug\netcoreapp3.1\Stocks.dll
+C:\Users\Gebruiker\Own Project\AdventOfCode\obj\Debug\netcoreapp3.1\Stocks.pdb
+C:\Users\Gebruiker\Own Project\AdventOfCode\obj\Debug\netcoreapp3.1\Stocks.genruntimeconfig.cache
+C:\Users\Gebruiker\Own Project\AdventOfCode\4 december\obj\Debug\netcoreapp3.1\Stocks.csprojAssemblyReference.cache
+C:\Users\Gebruiker\Own Project\AdventOfCode\4 december\obj\Debug\netcoreapp3.1\Stocks.csproj.CoreCompileInputs.cache
+C:\Users\Gebruiker\Own Project\AdventOfCode\4 december\obj\Debug\netcoreapp3.1\Stocks.AssemblyInfoInputs.cache
+C:\Users\Gebruiker\Own Project\AdventOfCode\4 december\obj\Debug\netcoreapp3.1\Stocks.AssemblyInfo.cs
+C:\Users\Gebruiker\Own Project\AdventOfCode\4 december\obj\Debug\netcoreapp3.1\Stocks.dll
+C:\Users\Gebruiker\Own Project\AdventOfCode\4 december\obj\Debug\netcoreapp3.1\Stocks.pdb
+C:\Users\Gebruiker\Own Project\AdventOfCode\4 december\bin\Debug\netcoreapp3.1\Stocks.exe
+C:\Users\Gebruiker\Own Project\AdventOfCode\4 december\bin\Debug\netcoreapp3.1\Stocks.deps.json
+C:\Users\Gebruiker\Own Project\AdventOfCode\4 december\bin\Debug\netcoreapp3.1\Stocks.runtimeconfig.json
+C:\Users\Gebruiker\Own Project\AdventOfCode\4 december\bin\Debug\netcoreapp3.1\Stocks.runtimeconfig.dev.json
+C:\Users\Gebruiker\Own Project\AdventOfCode\4 december\bin\Debug\netcoreapp3.1\Stocks.dll
+C:\Users\Gebruiker\Own Project\AdventOfCode\4 december\bin\Debug\netcoreapp3.1\Stocks.pdb
+C:\Users\Gebruiker\Own Project\AdventOfCode\4 december\obj\Debug\netcoreapp3.1\Stocks.genruntimeconfig.cache
