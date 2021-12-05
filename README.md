@@ -1,4 +1,4 @@
 # AdventOfCode
-Yearly computer puzzles!
+## Empty project
 
-These are the finished programs, meaning all part 2 solutions.
+Start your new day with a fresh command line interface!
