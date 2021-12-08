@@ -19,15 +19,17 @@ namespace AdventOfCode
             while (currLine != ":q")
             {
                 string[] dividers = currLine.Split("|");
-                string[] unique = dividers[0].Split(" ");
-                string[] output = dividers[1].Split(" ");
+                string[] unique = dividers[0].Split(" ", StringSplitOptions.RemoveEmptyEntries);
+                string[] output = dividers[1].Split(" ", StringSplitOptions.RemoveEmptyEntries);
 
+                var combinedNumbers = new Dictionary<int, string>();
                 foreach (string num in output)
                 {
-                    whatNumber(num);
+                    if (num.Length == 2) combinedNumbers.Add(2, num);
+                    if (num.Length == 4) combinedNumbers.Add(4, num);
+                    if (num.Length == 3) combinedNumbers.Add(7, num);
+                    if (num.Length == 7) combinedNumbers.Add(8, num);
                 }
-
-                // Parse the input -- currLine
 
                 // Read new line
                 currLine = Console.ReadLine();
@@ -35,40 +37,6 @@ namespace AdventOfCode
 
             // Do something with the input after runtime.
             Console.WriteLine("Result: " + total);
-        }
-
-        public static int whatNumber(string num)
-        {
-
-            switch (num.Length)
-            {
-                case 2: return 1; // Checks for num 1
-                case 3: return 7; // Checks for num 7
-                case 4: return 4; // Checks for num 4
-                case 7: return 8; // Checks for num 8
-            }
-
-            string sortedNum = String.Concat(num.OrderBy(c => c));
-
-            switch (sortedNum) {
-                case "abcefg": return 0;
-                case "acdeg": return 2;
-                case "acdfg": return 3;
-                case "abdfg": return 5;
-                case "abdefg": return 6;
-                default: return 9;
-            }
-
-            // 0 = abcefg
-            // 1 = cf
-            // 2 = acdeg
-            // 3 = acdfg
-            // 4 = bcdf
-            // 5 = abdfg
-            // 6 = abdefg
-            // 7 = acf
-            // 8 = abcdefg
-            // 9 = abcdfg
         }
     }
 }
