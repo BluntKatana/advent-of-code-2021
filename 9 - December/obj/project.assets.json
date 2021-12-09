@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\flori\\OneDrive\\Bureaublad\\eigen projecten\\AdventOfCode\\0 - Empty\\AdventOfCode.csproj",
+      "projectUniqueName": "C:\\Users\\flori\\OneDrive\\Bureaublad\\eigen projecten\\AdventOfCode\\9 - December\\AdventOfCode.csproj",
       "projectName": "AdventOfCodeProgram",
-      "projectPath": "C:\\Users\\flori\\OneDrive\\Bureaublad\\eigen projecten\\AdventOfCode\\0 - Empty\\AdventOfCode.csproj",
+      "projectPath": "C:\\Users\\flori\\OneDrive\\Bureaublad\\eigen projecten\\AdventOfCode\\9 - December\\AdventOfCode.csproj",
       "packagesPath": "C:\\Users\\flori\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\flori\\OneDrive\\Bureaublad\\eigen projecten\\AdventOfCode\\0 - Empty\\obj\\",
+      "outputPath": "C:\\Users\\flori\\OneDrive\\Bureaublad\\eigen projecten\\AdventOfCode\\9 - December\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
