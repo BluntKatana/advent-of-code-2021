@@ -1,5 +1,5 @@
 # Advent Of Code 2021
-#### Floris Bos
+The links will send you to the corresponding branch!
 
 - [--- Day 1: Sonar Sweep             ---]
 - [--- Day 2: Dive!                   ---]
