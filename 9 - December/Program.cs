@@ -17,49 +17,71 @@ namespace AdventOfCode
 
             string[] lines = input.ToArray();
 
-            int[][] heightmap = new int[lines.Length][];
+            Point[][] heightmap = new Point[lines.Length][];
 
             for (int i = 0; i < lines.Length; i++)
             {
-                int[] numArray = Array.ConvertAll(lines[i].ToCharArray(), c => (int)Char.GetNumericValue(c));
+                Point[] numArray = Array.ConvertAll(lines[i].ToCharArray(), c => new Point((int)Char.GetNumericValue(c), false));
                 heightmap[i] = numArray;
             }
 
-            int total = 0;
+            List<int> basinTotals = new List<int>();
+
             for (int x = 0; x < heightmap[0].Length; x++)
             { 
                 for (int y = 0; y < heightmap.Length; y++)
                 {
-                    int currNum = heightmap[y][x];
-                    if (checkBorder(heightmap, x, y, currNum))
-                        total += currNum + 1;
+                    Point currNum = heightmap[y][x];
+                    int basinTotal = checkBorders(heightmap, x, y, currNum);
+                    basinTotals.Add(basinTotal);
                 }
             }
+
+            int[] total = basinTotals.OrderByDescending(n => n).Take(4).ToArray();
 
             // Do something with the input after runtime.
             Console.WriteLine("Result: " + total);
         }
 
-        static public bool checkBorder(int[][] heightMap, int x, int y, int currNum)
+        static int checkBorders(Point[][] heightMap, int x, int y, Point p)
         {
-            if (x == 0 && y == 0) // Topleft
-                return currNum < heightMap[y + 1][x] && currNum < heightMap[y][x + 1];
-            else if (x == 0 && y == heightMap.Length - 1)  // Bottomleft
-                return currNum < heightMap[y - 1][x] && currNum < heightMap[y][x + 1];
-            else if (x == heightMap[0].Length - 1 && y == 0)  // Topright
-                return currNum < heightMap[y + 1][x] && currNum < heightMap[y][x - 1];
-            else if (x == heightMap[0].Length - 1 && y == heightMap.Length - 1) // Bottomright
-                return currNum < heightMap[y - 1][x] && currNum < heightMap[y][x - 1];
-            else if (x == 0) // At the left border
-                return currNum < heightMap[y - 1][x] && currNum < heightMap[y + 1][x] && currNum < heightMap[y][x + 1];
-            else if (x == heightMap[0].Length - 1) // At the right border
-                return currNum < heightMap[y - 1][x] && currNum < heightMap[y + 1][x] && currNum < heightMap[y][x - 1];
-            else if (y == 0) // At the top border
-                return currNum < heightMap[y + 1][x] && currNum < heightMap[y][x - 1] && currNum < heightMap[y][x + 1];
-            else if (y == heightMap.Length - 1) // At the bottom border
-                return currNum < heightMap[y - 1][x] && currNum < heightMap[y][x - 1] && currNum < heightMap[y][x + 1];
-            else // At no border!!
-                return currNum < heightMap[y - 1][x] && currNum < heightMap[y + 1][x] && currNum < heightMap[y][x - 1] && currNum < heightMap[y][x + 1];
+            int totalBasin = 0;
+            int currNum = p.num;
+            Point[][] newHeightMap = heightMap;
+            newHeightMap[y][x].flooded = true;
+
+            try {
+                if (!heightMap[y-1][x].flooded && currNum + 1 == heightMap[y - 1][x].num) // Check up
+                    totalBasin += 1 + checkBorders(newHeightMap, x, y - 1, newHeightMap[y - 1][x]);
+            } catch { }
+            try
+            {
+                if (!heightMap[y + 1][x].flooded && currNum + 1 == heightMap[y + 1][x].num) // Check check
+                    totalBasin += 1 + checkBorders(newHeightMap, x, y + 1, newHeightMap[y + 1][x]);
+            } catch { }
+            try
+            {
+                if (!heightMap[y][x + 1].flooded && currNum + 1 == heightMap[y][x + 1].num) // Check right
+                    totalBasin += 1 + checkBorders(newHeightMap, x + 1, y, newHeightMap[y][x + 1]);
+            } catch { }
+            try
+            {
+                if (!heightMap[y][x - 1].flooded && currNum + 1 == heightMap[y][x - 1].num) // Check down
+                    totalBasin += 1 + checkBorders(newHeightMap, x - 1, y, newHeightMap[y][x - 1]);
+            } catch { }
+
+            return totalBasin;
+        }
+    }
+    public class Point
+    {
+        public int num;
+        public bool flooded;
+
+        public Point(int _num, bool _flooded)
+        {
+            num = _num;
+            flooded = _flooded;
         }
     }
 }

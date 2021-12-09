@@ -9,3 +9,16 @@ C:\Users\flori\OneDrive\Bureaublad\eigen projecten\AdventOfCode\9 - December\obj
 C:\Users\flori\OneDrive\Bureaublad\eigen projecten\AdventOfCode\9 - December\obj\Debug\netcoreapp3.0\AdventOfCode.AssemblyInfo.cs
 C:\Users\flori\OneDrive\Bureaublad\eigen projecten\AdventOfCode\9 - December\obj\Debug\netcoreapp3.0\AdventOfCodeProgram.dll
 C:\Users\flori\OneDrive\Bureaublad\eigen projecten\AdventOfCode\9 - December\obj\Debug\netcoreapp3.0\AdventOfCodeProgram.pdb
+C:\Users\Gebruiker\Own Project\AdventOfCode_repo\9 - December\bin\Debug\netcoreapp3.0\AdventOfCodeProgram.exe
+C:\Users\Gebruiker\Own Project\AdventOfCode_repo\9 - December\bin\Debug\netcoreapp3.0\AdventOfCodeProgram.deps.json
+C:\Users\Gebruiker\Own Project\AdventOfCode_repo\9 - December\bin\Debug\netcoreapp3.0\AdventOfCodeProgram.runtimeconfig.json
+C:\Users\Gebruiker\Own Project\AdventOfCode_repo\9 - December\bin\Debug\netcoreapp3.0\AdventOfCodeProgram.runtimeconfig.dev.json
+C:\Users\Gebruiker\Own Project\AdventOfCode_repo\9 - December\bin\Debug\netcoreapp3.0\AdventOfCodeProgram.dll
+C:\Users\Gebruiker\Own Project\AdventOfCode_repo\9 - December\bin\Debug\netcoreapp3.0\AdventOfCodeProgram.pdb
+C:\Users\Gebruiker\Own Project\AdventOfCode_repo\9 - December\obj\Debug\netcoreapp3.0\AdventOfCode.csprojAssemblyReference.cache
+C:\Users\Gebruiker\Own Project\AdventOfCode_repo\9 - December\obj\Debug\netcoreapp3.0\AdventOfCode.csproj.CoreCompileInputs.cache
+C:\Users\Gebruiker\Own Project\AdventOfCode_repo\9 - December\obj\Debug\netcoreapp3.0\AdventOfCode.AssemblyInfoInputs.cache
+C:\Users\Gebruiker\Own Project\AdventOfCode_repo\9 - December\obj\Debug\netcoreapp3.0\AdventOfCode.AssemblyInfo.cs
+C:\Users\Gebruiker\Own Project\AdventOfCode_repo\9 - December\obj\Debug\netcoreapp3.0\AdventOfCodeProgram.dll
+C:\Users\Gebruiker\Own Project\AdventOfCode_repo\9 - December\obj\Debug\netcoreapp3.0\AdventOfCodeProgram.pdb
+C:\Users\Gebruiker\Own Project\AdventOfCode_repo\9 - December\obj\Debug\netcoreapp3.0\AdventOfCode.genruntimeconfig.cache
