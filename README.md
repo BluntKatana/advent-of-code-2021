@@ -1,25 +1,25 @@
 # Advent Of Code 2021
 #### Floris Bos
 
-- [1-December]:   --- Day 1: Sonar Sweep             ---
-- [2-December]:   --- Day 2: Dive!                   ---
-- [3-December]:   --- Day 3: Binary Diagnostic       ---
-- [4-December]:   --- Day 4: Giant Squid             ---
-- [5-December]:   --- Day 5: Hydrothermal Venture    ---
-- [6-December]:   --- Day 6: Lanternfish             ---
-- [7-December]:   --- Day 7: The Treachery of Whales ---
-- [8-December]:   --- Day 8: Seven Segment Search    ---
-- [9-December]:   --- Day 9: Smoke Basin             ---
+- [--- Day 1: Sonar Sweep             ---]
+- [--- Day 2: Dive!                   ---]
+- [--- Day 3: Binary Diagnostic       ---]   
+- [--- Day 4: Giant Squid             ---]   
+- [--- Day 5: Hydrothermal Venture    ---]   
+- [--- Day 6: Lanternfish             ---]   
+- [--- Day 7: The Treachery of Whales ---]   
+- [--- Day 8: Seven Segment Search    ---]   
+- [--- Day 9: Smoke Basin             ---] 
  
-[1-December]: https://github.com/BluntKatana/AdventOfCode/tree/1-December
-[2-December]: https://github.com/BluntKatana/AdventOfCode/tree/2-December
-[3-December]: https://github.com/BluntKatana/AdventOfCode/tree/3-December
-[4-December]: https://github.com/BluntKatana/AdventOfCode/tree/4-December
-[5-December]: https://github.com/BluntKatana/AdventOfCode/tree/5-December
-[6-December]: https://github.com/BluntKatana/AdventOfCode/tree/6-December
-[7-December]: https://github.com/BluntKatana/AdventOfCode/tree/7-December
-[8-December]: https://github.com/BluntKatana/AdventOfCode/tree/8-December
-[9-December]: https://github.com/BluntKatana/AdventOfCode/tree/9-December
+[--- Day 1: Sonar Sweep             ---]: https://github.com/BluntKatana/AdventOfCode/tree/1-December
+[--- Day 2: Dive!                   ---]: https://github.com/BluntKatana/AdventOfCode/tree/2-December
+[--- Day 3: Binary Diagnostic       ---]: https://github.com/BluntKatana/AdventOfCode/tree/3-December
+[--- Day 4: Giant Squid             ---]: https://github.com/BluntKatana/AdventOfCode/tree/4-December
+[--- Day 5: Hydrothermal Venture    ---]: https://github.com/BluntKatana/AdventOfCode/tree/5-December
+[--- Day 6: Lanternfish             ---]: https://github.com/BluntKatana/AdventOfCode/tree/6-December
+[--- Day 7: The Treachery of Whales ---]: https://github.com/BluntKatana/AdventOfCode/tree/7-December
+[--- Day 8: Seven Segment Search    ---]: https://github.com/BluntKatana/AdventOfCode/tree/8-December
+[--- Day 9: Smoke Basin             ---]: https://github.com/BluntKatana/AdventOfCode/tree/9-December
 [10-December]: https://github.com/BluntKatana/AdventOfCode/tree/10-December
 [11-December]: https://github.com/BluntKatana/AdventOfCode/tree/11-December
 [12-December]: https://github.com/BluntKatana/AdventOfCode/tree/12-December
