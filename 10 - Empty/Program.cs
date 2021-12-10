@@ -17,14 +17,15 @@ namespace AdventOfCode
             
             while (currLine != ":q")
             {
+                string line = currLine;
                 // Remove legal chunks from line.
                 string[] legalChunks = new[] { "()", "[]", "{}", "<>" };
-                while (legalChunks.Any(s => currLine.Contains(s)));
-                    currLine = currLine.Replace("()", "").Replace("[]", "").Replace("{}", "").Replace("<>", "");
+                while (legalChunks.Any(s => line.Contains(s)))
+                    line = line.Replace("()", "").Replace("[]", "").Replace("{}", "").Replace("<>", "");
 
                 // Check for corrupted lines.
-                if (checkWrongCharPoints(currLine) == 0)
-                    totalScores.Add(getScore(currLine));
+                if (checkWrongCharPoints(line) == 0)
+                    totalScores.Add(getScore(line));
 
                 // Read new line.
                 currLine = Console.ReadLine();
