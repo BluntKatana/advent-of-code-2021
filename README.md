@@ -12,6 +12,7 @@ The links will send you to the corresponding branch!
 * [Day 9: Smoke Basin]
 * [Day 10: Syntax Scoring]
 - [Day 11: Dumbo Octopus]
+- [Day 12: Passage Pathing]
  
 [Day 1: Sonar Sweep]: https://github.com/BluntKatana/AdventOfCode/tree/1-December
 [Day 2: Dive!]: https://github.com/BluntKatana/AdventOfCode/tree/2-December
@@ -24,7 +25,7 @@ The links will send you to the corresponding branch!
 [Day 9: Smoke Basin]: https://github.com/BluntKatana/AdventOfCode/tree/9-December
 [Day 10: Syntax Scoring]: https://github.com/BluntKatana/AdventOfCode/tree/10-December
 [Day 11: Dumbo Octopus]: https://github.com/BluntKatana/AdventOfCode/tree/11-December
-[12-December]: https://github.com/BluntKatana/AdventOfCode/tree/12-December
+[Day 12: Passage Pathing]: https://github.com/BluntKatana/AdventOfCode/tree/12-December
 [13-December]: https://github.com/BluntKatana/AdventOfCode/tree/13-December
 [14-December]: https://github.com/BluntKatana/AdventOfCode/tree/14-December
 [15-December]: https://github.com/BluntKatana/AdventOfCode/tree/15-December
