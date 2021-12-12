@@ -7,8 +7,8 @@ namespace AdventOfCode
     class Program
     {
         public static Dictionary<string, List<string>> neighbours = new Dictionary<string, List<string>>();
-        public static List<string> paths = new List<string>();
-        public static int totalSmallCavePaths = 0;
+        public static int totalPaths = 0;
+        public static bool print = false;
 
         static void Main(string[] args)
         {
@@ -23,39 +23,36 @@ namespace AdventOfCode
                     neighbours[caves[0]].Add(caves[1]);
                 else
                     neighbours.Add(caves[0], new List<string>() { caves[1] });
+
                 if (neighbours.ContainsKey(caves[1]))
                     neighbours[caves[1]].Add(caves[0]);
                 else
                     neighbours.Add(caves[1], new List<string>() { caves[0] });
 
-                // Read new line
                 currLine = Console.ReadLine();
             }
 
             allPaths("start", "end");
 
             // Do something with the input after runtime.
-            Console.WriteLine("Result: " + paths.Count());
+            Console.WriteLine("Result: " + totalPaths);
         }
 
         public static void allPaths(string start, string end)
-        { 
-            List<string> smallCavesVisited = new List<string>();
-            List<string> visited = new List<string>();
-            visited.Add(start);
-            smallCavesVisited.Add(start);
+        {
+            Stack<string> visited = new Stack<string>();
+            visited.Push(start);
 
-            allPathsFrom(start, end, smallCavesVisited, visited, false);
+            allPathsFrom(start, end, new List<string>(), visited, false);
         }
 
-        public static void allPathsFrom(string curr, string end, List<string> smallCavesVisited, List<string> visited, bool visitedTwice)
+        public static void allPathsFrom(string curr, string end, List<string> smallCavesVisited, Stack<string> visited, bool visitedTwice)
         {
             // Check if this is the end node.
             if (curr == end)
             {
-                string newPath = string.Join(",", visited);
-                Console.WriteLine(newPath);
-                paths.Add(newPath);
+                if (print) Console.WriteLine(string.Join(",", visited));
+                totalPaths += 1;
                 return;
             }
 
@@ -64,19 +61,20 @@ namespace AdventOfCode
                 smallCavesVisited.Add(curr);
 
             // Check all the neighbours of the current cave.
-            foreach (string cave in neighbours[curr]) 
+            foreach (string cave in neighbours[curr])
             {
                 if (!visitedTwice && smallCavesVisited.Contains(cave) && cave != "start")
                 {
-                    visited.Add(cave);
+                    visited.Push(cave);
                     allPathsFrom(cave, end, smallCavesVisited, visited, true);
-                    visited.RemoveAt(visited.Count - 1);
+                    visited.Pop();
 
-                } else if (!smallCavesVisited.Contains(cave))
+                }
+                else if (!smallCavesVisited.Contains(cave) && cave != "start")
                 {
-                    visited.Add(cave);
+                    visited.Push(cave);
                     allPathsFrom(cave, end, smallCavesVisited, visited, visitedTwice);
-                    visited.RemoveAt(visited.Count - 1);
+                    visited.Pop();
                 }
             }
 
