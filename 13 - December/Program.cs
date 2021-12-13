@@ -29,8 +29,6 @@ namespace AdventOfCode
                 currLine = Console.ReadLine();
             }
 
-            printCoords();
-
             // Do the fold action.
             foreach ((string c, int n) in folds)
             {
@@ -70,10 +68,10 @@ namespace AdventOfCode
                 grid[x, y] = true;
             }
 
-            for (int x = maxX - 1; x >= 0; x--)
+            for (int y = 0; y < maxY; y++)
             {
                 string currLine = "";
-                for (int y = 0; y < maxY; y++)
+                for (int x = 0; x < maxX; x++)
                 {
                     if (grid[x, y])
                         currLine += "#";
