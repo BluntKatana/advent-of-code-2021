@@ -7,7 +7,7 @@ namespace AdventOfCode
     class Program
     {
         public static string polymer;
-        public static Dictionary<string, string> insertionRules = new Dictionary<string, string>();
+        public static Dictionary<(char, char), char> insertionRules = new Dictionary<(char, char), char>();
         public static Dictionary<char, long> countChars;
         public static int maxStep = 40;
         static void Main(string[] args)
@@ -19,7 +19,7 @@ namespace AdventOfCode
             while (currLine != ":q")
             {
                 string[] insertion = currLine.Split(" ");
-                insertionRules.Add(insertion[0], insertion[2]);
+                insertionRules.Add((insertion[0][0], insertion[0][1]), insertion[2][0]);
                 currLine = Console.ReadLine();
             }
 
@@ -27,7 +27,10 @@ namespace AdventOfCode
             countChars = polymer.Distinct().ToDictionary(c => c, c => (long)0);
             countChars[polymer.Last()] += 1;
             // Create the polymer.
-            getCount(polymer, 0);
+            for (int i = 0; i < polymer.Length - 1; i++)
+            {
+                getCount(polymer[i], polymer[i+1], 0);
+            }
 
             long maxValue = countChars.Values.Max();
             long minValue = countChars.Values.Min();
@@ -35,51 +38,23 @@ namespace AdventOfCode
             Console.WriteLine("Result: " + (maxValue - minValue));
         }
 
-        public static void getCount(string substring, int step)
+        public static void getCount(char c1, char c2, int step)
         {
-            // Count the elements in the substring if maxStep has been passed.
-            if (step == maxStep) {
-                if (substring.Length > 2)
-                {
-                    for (int i = 0; i < 2; i++)
-                    {
-                        try
-                        {
-                            countChars[substring[i]] += 1;
-                        }
-                        catch
-                        {
-                            countChars.Add(substring[i], 1);
-                        }
-                    }
-                }
-                else
-                {
-                    foreach (char c in substring)
-                    {
-                        try
-                        {
-                            countChars[c] += 1;
-                        }
-                        catch
-                        {
-                            countChars.Add(c, 1);
-                        }
-
-                    }
-                }
+            if (step == maxStep)
+            {
+                try { countChars[c1] += 1; } catch { countChars.Add(c1, 1); }
+                //try { countChars[c2] += 1; } catch { countChars.Add(c2, 1); }
                 return;
             }
-            else {
-                for (int i = 0; i < substring.Length - 1; i++)
-                {
-                    string checkString = substring[i] + "" + substring[i + 1];
-                    if (insertionRules.ContainsKey(checkString))
-                        getCount(substring[i] + insertionRules[checkString] + substring[i + 1], step + 1);
-                    else
-                        getCount(checkString, step + 1);
-
-                }
+            if (insertionRules.ContainsKey((c1, c2)))
+            {
+                getCount(c1, insertionRules[(c1, c2)], step + 1);
+                getCount(insertionRules[(c1, c2)], c2, step + 1);
+            }
+            else
+            {
+                countChars[c1] += 1;
+                countChars[c2] += 1;
             }
         }
     }
