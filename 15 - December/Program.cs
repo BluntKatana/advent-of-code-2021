@@ -71,11 +71,10 @@ namespace AdventOfCode
             List<Node> set = new List<Node>();
             set.Add(new Node(0, 0, 0));
             distance[0, 0] = 0;
-             
+        
             while (distance[amount - 1, amount - 1] == int.MaxValue)
             {
                 // Get the node with minimum distance and delete it.
-                set.Sort((Node a, Node b) => a.dist.CompareTo(b.dist));
                 int min = set.Min(n => n.dist);
                 Node k = set.Find(n => n.dist == min);
                 set.Remove(k);
