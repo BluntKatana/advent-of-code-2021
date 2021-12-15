@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Gebruiker\\Own Project\\AdventOfCode_repo\\15 - December\\AdventOfCode.csproj": {}
+    "C:\\Users\\Gebruiker\\Own Project\\AdventOfCode\\AdventOfCode\\15 - December\\AdventOfCode.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Gebruiker\\Own Project\\AdventOfCode_repo\\15 - December\\AdventOfCode.csproj": {
+    "C:\\Users\\Gebruiker\\Own Project\\AdventOfCode\\AdventOfCode\\15 - December\\AdventOfCode.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Gebruiker\\Own Project\\AdventOfCode_repo\\15 - December\\AdventOfCode.csproj",
+        "projectUniqueName": "C:\\Users\\Gebruiker\\Own Project\\AdventOfCode\\AdventOfCode\\15 - December\\AdventOfCode.csproj",
         "projectName": "AdventOfCodeProgram",
-        "projectPath": "C:\\Users\\Gebruiker\\Own Project\\AdventOfCode_repo\\15 - December\\AdventOfCode.csproj",
+        "projectPath": "C:\\Users\\Gebruiker\\Own Project\\AdventOfCode\\AdventOfCode\\15 - December\\AdventOfCode.csproj",
         "packagesPath": "C:\\Users\\Gebruiker\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Gebruiker\\Own Project\\AdventOfCode_repo\\15 - December\\obj\\",
+        "outputPath": "C:\\Users\\Gebruiker\\Own Project\\AdventOfCode\\AdventOfCode\\15 - December\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Gebruiker\\AppData\\Roaming\\NuGet\\NuGet.Config",
