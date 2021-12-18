@@ -1,125 +1,187 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text.RegularExpressions;
 
 namespace AdventOfCode
 {
     class Program
     {
+        public static List<Blob> snailfish = new List<Blob>();
+        public static bool explChange = true, splitChange = true;
+
         static void Main(string[] args)
         {
-
             string currLine = Console.ReadLine();
-            bool lastLine = false;
-            while (!lastLine)
-            {
-                bool going = true;
-                while (going)
+            snailfish = parseToBlobs(currLine, false);
+
+            while (true)
+            {              
+                while (explChange || splitChange)
                 {
-                    (string explodedCurrLine, bool explodedChange) = explode(currLine);
-                    if (explodedChange)
-                        currLine = explodedCurrLine;
-                    else
-                    {
-                        (string splitCurrLine, bool splitChange) = split(currLine);
-                        if (splitChange)
-                            currLine = splitCurrLine;
-                        else
-                            going = false;
-                    }
+                    explode();
+                    if (!explChange) split();
                 }
+                currLine = Console.ReadLine();
+                if (currLine == "") break;
+                add(currLine);
+                explChange = true; splitChange = true;
+            }
+        }
 
-                //Console.WriteLine(currLine);
-
-                string newLine = Console.ReadLine();
-                if (newLine == "") break;
-                currLine = add(currLine, newLine);
+        public static void add(string addon)
+        {
+            for (int i = 0; i < snailfish.Count; i++)
+            {
+                snailfish[i].depth++;
+                snailfish[i].open++;
             }
 
-
-            Console.WriteLine("Result: " + currLine);
+            snailfish.AddRange(parseToBlobs(addon, true));
         }
 
-        public static string add(string str1, string str2)
+        public static void split()
         {
-            return "[" + str1 + "," + str2 + "]";
-        }
-
-        public static (string, bool) explode(string str)
-        {
-            int depth = 0;
-            for (int i = 0; i < str.Length; i++)
+            for (int i = 0; i < snailfish.Count; i++)
             {
-                char c = str[i];
-                if (c == '[') depth++;
-                if (c == ']') depth--;
-
-                if (depth >= 5 && char.IsDigit(str[i + 1]))
+                Blob currBlob = snailfish[i];
+                if (currBlob.value > 9)
                 {
-                    string substring = str[i..(i+5)];
-                    int leftVal      = substring[1] - '0';
-                    int rightVal     = substring[3] - '0';
+                    int newLeftVal  = (int)Math.Floor((double)currBlob.value / 2);
+                    int newRightVal = (int)Math.Ceiling((double)currBlob.value / 2);
 
-                    str = str.Remove(i, 5);
+                    snailfish.Insert(i + 1, new Blob(newRightVal, currBlob.depth + 1, currBlob.open + 1, currBlob.close));
+                    snailfish.Insert(i + 1, new Blob(newLeftVal, currBlob.depth + 1, currBlob.open + 1, currBlob.close));
+                    snailfish.RemoveAt(i);
+                    splitChange = true;
 
-                    // Check for left value
-                    var leftMatch = Regex.Match(str[..i], "[0-9]+", RegexOptions.RightToLeft);
-                    bool leftBound = leftMatch.Success;
-
-                    // Check for right value
-                    var rightMatch = Regex.Match(str[i..], "[0-9]+");
-                    bool rightBound = rightMatch.Success;
-
-                    // Do some string manipulation
-                    if (rightBound)
+                    // Update the open and close values
+                    for (int j = i + 2; j < snailfish.Count; j++)
                     {
-                        int newRightVal = rightVal + int.Parse(rightMatch.Value);
-                        if (str[i..].First() == ',' && char.IsDigit(str[i + 1]))
-                            str = str.Remove(i, rightMatch.Value.Length + 1).Insert(i, "0," + newRightVal.ToString());
-                        else 
-                            str = str.Remove(i + rightMatch.Index, rightMatch.Value.Length).Insert(i + rightMatch.Index, newRightVal.ToString()); 
-                    }
-                    if (leftBound)
-                    {
-                        int newLeftVal = leftVal + int.Parse(leftMatch.Value);
-                        if (str[..i].Last() == ',' && char.IsDigit(str[i - 2]))
-                            str = str.Remove(leftMatch.Index, leftMatch.Value.Length + 1).Insert(leftMatch.Index, newLeftVal.ToString() + ",0");
-                        else
-                            str = str.Remove(leftMatch.Index, leftMatch.Value.Length).Insert(leftMatch.Index, newLeftVal.ToString());
-                    }
-                    if (rightBound && leftBound)
-                    {
-                        if (str[i..(i + 2)] == "[]")
-                            str = str.Remove(i, 3);
-                        if (str[i..(i + 2)] == "[,")
-                            str = str.Remove(i + 1, 1);
-                        if (str[i] == ',')
-                            str = str.Remove(i, 1);
+                        snailfish[j].close++;
+                        snailfish[j].open++;
                     }
 
-                    return (str, true);
+                    return;
                 }
-
             }
 
-            return (str, false);
+            splitChange = false;
         }
 
-        public static (string, bool) split(string str)
+        public static void explode()
         {
-            var match = Regex.Match(str, "[1-9][0-9]+");
-
-            if (match.Success)
+            for (int i = 0; i < snailfish.Count; i++)
             {
-                int val         = int.Parse(match.Value);
-                int leftVal     = (int)Math.Floor((double)val / 2);
-                int rightVal    = (int)Math.Ceiling((double)val / 2);
-                string res = "[" + leftVal + "," + rightVal + "]";
-                return (str.Replace(match.Value, res), true);
+                // If depth 5 is reached.
+                if (snailfish[i].depth > 4)
+                {
+                    int leftVal = snailfish[i].value;
+                    int rightVal = snailfish[i + 1].value;
+
+                    explChange = true;
+
+                    // No numbers more numbers to the left
+                    if (i == 0)
+                    {
+                        snailfish[i + 2].value += rightVal;
+                        snailfish.Insert(i + 2, new Blob(0, snailfish[i + 2].depth, snailfish[i + 2].open, snailfish[i + 2].close));
+                        snailfish.RemoveAt(i); snailfish.RemoveAt(i);
+                        return;
+                    }
+
+                    // No more numbers to the right
+                    if (i == snailfish.Count - 2)
+                    {
+                        snailfish[i - 1].value += leftVal;
+                        snailfish.Insert(i + 2, new Blob(0, snailfish[i - 1].depth, snailfish[i - 1].open, snailfish[i - 1].close));
+                        snailfish.RemoveAt(i); snailfish.RemoveAt(i);
+                        return;
+                    }
+
+                    // Numbers on the left and right
+                    snailfish[i - 1].value += leftVal;
+                    snailfish[i + 2].value += rightVal;
+                    
+                    // Check if the open-brackets from the #-left are 1 less than the current #
+                    if (snailfish[i - 1].depth == snailfish[i].depth - 1 && snailfish[i-1].open + 1 == snailfish[i].open)
+                        snailfish.Insert(i + 2, 
+                            new Blob(0, snailfish[i - 1].depth, snailfish[i - 1].open, snailfish[i - 1].close));
+                    
+                    // Check if the close-brackets from the #-right are 1 more than the curent #
+                    if (snailfish[i + 2].depth == snailfish[i].depth - 1 && snailfish[i].close - 1 == snailfish[i + 2].close)
+                        snailfish.Insert(i + 2,
+                            new Blob(0, snailfish[i + 2].depth, snailfish[i + 2].open, snailfish[i + 2].close));
+
+                    snailfish.RemoveAt(i); snailfish.RemoveAt(i);
+
+                    // Update the open and close values
+                    for (int j = i; j < snailfish.Count; j++)
+                    {
+                        snailfish[j].close--;
+                        snailfish[j].open--;
+                    }
+
+                    return;
+                }
             }
 
-            return (str, false);
+            explChange = false;
+        }
+
+        public static List<Blob> parseToBlobs(string input, bool add)
+        {
+            List<Blob> tempSnailfish = new List<Blob>();
+            int depth = 0, open = 0, close = 0;
+
+            if (add)
+            {
+                Blob lastBlob = snailfish[snailfish.Count - 1];
+                depth = 1; 
+                open = lastBlob.open; 
+                close = lastBlob.close + lastBlob.depth;
+            }
+
+
+            for (int i = 0; i < input.Length; i++)
+            {
+                char c = input[i];
+                switch (c)
+                {
+                    case '[':
+                        depth++;
+                        open++;
+                        break;
+                    case ']':
+                        depth--;
+                        close++;
+                        break;
+                    case ',':
+                        break;
+                    default:
+                        int nextchar = i;
+                        string val = c.ToString();
+                        while (char.IsDigit(input[nextchar + 1]))
+                        {
+                            val += input[nextchar + 1];
+                            nextchar++;
+                        }
+                        i = nextchar;
+                        tempSnailfish.Add(new Blob(int.Parse(val), depth, open, close));
+                        break;
+                }
+            }
+            return tempSnailfish;
+        }
+    }
+
+    class Blob
+    {
+        public int value, depth, open, close;
+        public Blob(int value, int depth, int open, int close)
+        {
+            this.value = value;
+            this.depth = depth;
+            this.open = open;
+            this.close = close;
         }
     }
 }
