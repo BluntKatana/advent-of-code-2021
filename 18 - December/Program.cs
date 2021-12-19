@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Collections.Generic;
 
 namespace AdventOfCode
@@ -6,140 +7,161 @@ namespace AdventOfCode
     class Program
     {
         public static List<Blob> snailfish = new List<Blob>();
-        public static bool explChange = true, splitChange = true;
-
         static void Main(string[] args)
         {
             string currLine = Console.ReadLine();
-            snailfish = parseToBlobs(currLine, false);
-
-            while (true)
-            {              
-                while (explChange || splitChange)
-                {
-                    explode();
-                    if (!explChange) split();
-                }
+            List<string> lines = new List<string>();
+            while (currLine != "")
+            {
+                lines.Add(currLine);
                 currLine = Console.ReadLine();
-                if (currLine == "") break;
-                add(currLine);
-                explChange = true; splitChange = true;
-            }
-        }
-
-        public static void add(string addon)
-        {
-            for (int i = 0; i < snailfish.Count; i++)
-            {
-                snailfish[i].depth++;
-                snailfish[i].open++;
+                
             }
 
-            snailfish.AddRange(parseToBlobs(addon, true));
-        }
-
-        public static void split()
-        {
-            for (int i = 0; i < snailfish.Count; i++)
+            long maxMag = 0;
+            // Recurse over every possible
+            for (int i = 0; i < lines.Count; i++)
             {
-                Blob currBlob = snailfish[i];
-                if (currBlob.value > 9)
+                for (int j = i + 1; j < lines.Count; j++)
                 {
-                    int newLeftVal  = (int)Math.Floor((double)currBlob.value / 2);
-                    int newRightVal = (int)Math.Ceiling((double)currBlob.value / 2);
+                    // x + y
+                    snailfish.Clear();
+                    add(parseToBlobs(lines[i]), parseToBlobs(lines[j]));
+                    reduce();
+                    maxMag = Math.Max(maxMag, magnitude(snailfish));
 
-                    snailfish.Insert(i + 1, new Blob(newRightVal, currBlob.depth + 1, currBlob.open + 1, currBlob.close));
-                    snailfish.Insert(i + 1, new Blob(newLeftVal, currBlob.depth + 1, currBlob.open + 1, currBlob.close));
+                    // y + x
+                    snailfish.Clear();
+                    add(parseToBlobs(lines[j]), parseToBlobs(lines[i]));
+                    reduce();
+                    maxMag = Math.Max(maxMag, magnitude(snailfish));
+                }
+            }
+            Console.WriteLine(maxMag);
+        }
+
+        public static void reduce()
+        {
+            while (explode() || split()) {; }
+        }
+
+        public static long magnitude(List<Blob> snailList)
+        {
+            // remove beginning and end brackets
+            if (!(snailList[0].open || snailList[0].close)) {
+                return snailList[0].value;
+            }
+
+            snailList.RemoveAt(snailList.Count - 1); snailList.RemoveAt(0);
+
+            int open = 0, close = 0;
+
+            for (int i = 0; i < snailList.Count; i++)
+            {
+                if (snailList[i].open) open++;
+                if (snailList[i].close) close++;
+                if (open == close)
+                {
+                    List<Blob> leftSide = snailList.GetRange(0, i + 1);
+                    List<Blob> rightSide = snailList.GetRange(i + 1, snailList.Count - i - 1);
+
+                    return 3 * magnitude(leftSide) + 2 * magnitude(rightSide);
+                }
+                    
+            }
+
+            return 1;
+        }
+
+
+        public static int howManyNums(List<Blob> snailList)
+        {
+            return snailList.FindAll(v => v.value >= 0).Count;
+        }
+        public static void add(List<Blob> one, List<Blob> two)
+        {
+            snailfish.AddRange(one);
+            snailfish.AddRange(two);
+            snailfish.Insert(0, new Blob(-1, true, false)); // Add open bracket
+            snailfish.Add(new Blob(-1, false, true));       // Add closing bracket
+        }
+
+        public static bool split()
+        {
+            for (int i = 0; i < snailfish.Count; i++)
+            {
+                if (snailfish[i].value > 9)
+                {
+                    int val = snailfish[i].value;
+                    int leftVal = (int)Math.Floor((double)val / 2);
+                    int rightVal = (int)Math.Ceiling((double)val / 2);
+
+                    // Replace high value with pair of low values
                     snailfish.RemoveAt(i);
-                    splitChange = true;
+                    List<Blob> newPair = new List<Blob>() {
+                        new Blob(-1, true, false),
+                        new Blob(leftVal, false, false),
+                        new Blob(rightVal, false, false),
+                        new Blob(-1, false, true)
+                    };
+                    snailfish.InsertRange(i, newPair);
 
-                    // Update the open and close values
-                    for (int j = i + 2; j < snailfish.Count; j++)
-                    {
-                        snailfish[j].close++;
-                        snailfish[j].open++;
-                    }
-
-                    return;
+                    return true;
                 }
             }
 
-            splitChange = false;
+            return false;
         }
 
-        public static void explode()
+        public static bool explode()
         {
+            int depth = 0;
             for (int i = 0; i < snailfish.Count; i++)
             {
-                // If depth 5 is reached.
-                if (snailfish[i].depth > 4)
+                if (snailfish[i].open)
                 {
-                    int leftVal = snailfish[i].value;
-                    int rightVal = snailfish[i + 1].value;
-
-                    explChange = true;
-
-                    // No numbers more numbers to the left
-                    if (i == 0)
+                    depth++;
+                    if (depth == 5)
                     {
-                        snailfish[i + 2].value += rightVal;
-                        snailfish.Insert(i + 2, new Blob(0, snailfish[i + 2].depth, snailfish[i + 2].open, snailfish[i + 2].close));
-                        snailfish.RemoveAt(i); snailfish.RemoveAt(i);
-                        return;
+                        // Find left value
+                        for (int j = i - 1; j >= 0; j--)
+                        {
+                            if (snailfish[j].value >= 0)
+                            {
+                                snailfish[j].value = snailfish[j].value + snailfish[i + 1].value;
+                                break;
+                            }
+                        }
+
+                        // Find right value
+                        for (int j = i + 3; j < snailfish.Count; j++)
+                        {
+                            if (snailfish[j].value >= 0)
+                            {
+                                snailfish[j].value = snailfish[j].value + snailfish[i + 2].value;
+                                break;
+                            }
+                        }
+
+                        // Replace pair with 0
+                        snailfish.RemoveRange(i, 4);
+                        snailfish.Insert(i, new Blob(0, false, false));
+
+                        return true;
                     }
-
-                    // No more numbers to the right
-                    if (i == snailfish.Count - 2)
-                    {
-                        snailfish[i - 1].value += leftVal;
-                        snailfish.Insert(i + 2, new Blob(0, snailfish[i - 1].depth, snailfish[i - 1].open, snailfish[i - 1].close));
-                        snailfish.RemoveAt(i); snailfish.RemoveAt(i);
-                        return;
-                    }
-
-                    // Numbers on the left and right
-                    snailfish[i - 1].value += leftVal;
-                    snailfish[i + 2].value += rightVal;
-                    
-                    // Check if the open-brackets from the #-left are 1 less than the current #
-                    if (snailfish[i - 1].depth == snailfish[i].depth - 1 && snailfish[i-1].open + 1 == snailfish[i].open)
-                        snailfish.Insert(i + 2, 
-                            new Blob(0, snailfish[i - 1].depth, snailfish[i - 1].open, snailfish[i - 1].close));
-                    
-                    // Check if the close-brackets from the #-right are 1 more than the curent #
-                    if (snailfish[i + 2].depth == snailfish[i].depth - 1 && snailfish[i].close - 1 == snailfish[i + 2].close)
-                        snailfish.Insert(i + 2,
-                            new Blob(0, snailfish[i + 2].depth, snailfish[i + 2].open, snailfish[i + 2].close));
-
-                    snailfish.RemoveAt(i); snailfish.RemoveAt(i);
-
-                    // Update the open and close values
-                    for (int j = i; j < snailfish.Count; j++)
-                    {
-                        snailfish[j].close--;
-                        snailfish[j].open--;
-                    }
-
-                    return;
+                } 
+                else if (snailfish[i].close)
+                {
+                    depth--;
                 }
             }
 
-            explChange = false;
+            return false;
         }
 
-        public static List<Blob> parseToBlobs(string input, bool add)
+        public static List<Blob> parseToBlobs(string input)
         {
             List<Blob> tempSnailfish = new List<Blob>();
-            int depth = 0, open = 0, close = 0;
-
-            if (add)
-            {
-                Blob lastBlob = snailfish[snailfish.Count - 1];
-                depth = 1; 
-                open = lastBlob.open; 
-                close = lastBlob.close + lastBlob.depth;
-            }
-
 
             for (int i = 0; i < input.Length; i++)
             {
@@ -147,12 +169,10 @@ namespace AdventOfCode
                 switch (c)
                 {
                     case '[':
-                        depth++;
-                        open++;
+                        tempSnailfish.Add(new Blob(-1, true, false));
                         break;
                     case ']':
-                        depth--;
-                        close++;
+                        tempSnailfish.Add(new Blob(-1, false, true));
                         break;
                     case ',':
                         break;
@@ -165,21 +185,34 @@ namespace AdventOfCode
                             nextchar++;
                         }
                         i = nextchar;
-                        tempSnailfish.Add(new Blob(int.Parse(val), depth, open, close));
+                        tempSnailfish.Add(new Blob(int.Parse(val), false, false));
                         break;
                 }
             }
             return tempSnailfish;
         }
+
+        public static string printBlobList(List<Blob> str)
+        {
+            string res = "";
+            foreach (Blob b in str)
+            {
+                if (b.open) res += "[";
+                if (b.close) res += "]";
+                if (b.value >= 0) res += b.value;
+            }
+
+            return res;
+        }
     }
 
     class Blob
     {
-        public int value, depth, open, close;
-        public Blob(int value, int depth, int open, int close)
+        public int value;
+        public bool open, close;
+        public Blob(int value, bool open, bool close)
         {
             this.value = value;
-            this.depth = depth;
             this.open = open;
             this.close = close;
         }
