@@ -16,6 +16,9 @@ The links will send you to the corresponding branch!
 - [Day 13: Transparent Origami]
 - [Day 14: Extended Polymerization]
 - [Day 15: Chiton]
+* [Day 16: Packet Decoder]
+* [Day 17: Trick Shot]
+* [Day 18: Snailfish]
  
 [Day 1: Sonar Sweep]: https://github.com/BluntKatana/AdventOfCode/tree/1-December
 [Day 2: Dive!]: https://github.com/BluntKatana/AdventOfCode/tree/2-December
@@ -32,9 +35,9 @@ The links will send you to the corresponding branch!
 [Day 13: Transparent Origami]: https://github.com/BluntKatana/AdventOfCode/tree/13-December
 [Day 14: Extended Polymerization]: https://github.com/BluntKatana/AdventOfCode/tree/14-December
 [Day 15: Chiton]: https://github.com/BluntKatana/AdventOfCode/tree/15-December
-[16-December]: https://github.com/BluntKatana/AdventOfCode/tree/16-December
-[17-December]: https://github.com/BluntKatana/AdventOfCode/tree/17-December
-[18-December]: https://github.com/BluntKatana/AdventOfCode/tree/18-December
+[Day 16: Packet Decoder]: https://github.com/BluntKatana/AdventOfCode/tree/16-December
+[Day 17: Trick Shot]: https://github.com/BluntKatana/AdventOfCode/tree/17-December
+[Day 18: Snailfish]: https://github.com/BluntKatana/AdventOfCode/tree/18-December
 [19-December]: https://github.com/BluntKatana/AdventOfCode/tree/19-December
 [20-December]: https://github.com/BluntKatana/AdventOfCode/tree/20-December
 [21-December]: https://github.com/BluntKatana/AdventOfCode/tree/21-December
