@@ -1,110 +1,132 @@
 ﻿using System;
-using System.Linq;
 using System.Collections.Generic;
 
 namespace AdventOfCode
 {
     class Program
     {
+        // Example was size 5x5
+        // Input   was size 100x100
+        public static int size = 100;
+        public static int offset = 1;
+        public static string algorithm = "";
         static void Main(string[] args)
         {
-            string imageEnhancementAlgorithm = Console.ReadLine();
+            algorithm = Console.ReadLine();
+            algorithm = '.' + algorithm.Remove(0, 1);
             _ = Console.ReadLine();
             string currLine = Console.ReadLine();
             List<string> lines = new List<string>();
-            while (currLine != "") { 
+            while (currLine != "")
+            {
                 lines.Add(currLine);
                 currLine = Console.ReadLine();
             }
 
-            // Create starting image
-            Dictionary<(int, int), char) startingImage = new char[lines.Count, lines[0].Length];
-            for (int x = 0; x < lines.Count; x++)
-                for (int y = 0; y < lines[0].Length; y++)
-                    startingImage[x, y] = lines[x][y];
+            size = lines[0].Length;
 
-            // Enhance 1 time
-            char[,] newImage = enhance(startingImage, imageEnhancementAlgorithm);
-            //printImage(newImage);
+            // Creating starting image
+            bool[,] originalImage = new bool[size, size];
+            for (int i = 0; i < size; i++)
+                for (int j = 0; j < size; j++)
+                    if (lines[i][j] == '#') originalImage[i, j] = true;
 
-            // Enhance second time
-            char[,] ultraEnhancedImage = enhance(newImage, imageEnhancementAlgorithm);
-            //printImage(ultraEnhancedImage);
+            bool[,] enhanced1xImage = enhanceImage(originalImage, 0);
+            printImage(enhanced1xImage, 0);
 
-            int total = 0;
+            bool[,] enhanced2xImage = enhanceImage(enhanced1xImage, 0);
+            printImage(enhanced2xImage, 1);
 
-            for (int i = 0; i < ultraEnhancedImage.GetLength(1); i++)
-                for (int j = 0; j < ultraEnhancedImage.GetLength(0); j++)
-                    if (ultraEnhancedImage[i, j] == '#') total++;
-
-
-            // Do something with the input after runtime.
-            Console.WriteLine("Result: " + total);
+            Console.WriteLine(countTotal(enhanced2xImage));
         }
 
-        static public char[,] enhance(char[,] image, string algorithm)
+        public static int countTotal(bool[,] image)
         {
-            int new_y_size = 3 * image.GetLength(1);
-            int new_x_size = 3 * image.GetLength(0);
-            char[,] tempNewImage = new char[new_x_size, new_y_size];
-            char[,] newImage = new char[new_x_size, new_y_size];
-            
-            // Project oldImage onto tempNewImage
-            for (int y = 0; y < image.GetLength(1); y++)
-            {
-                for (int x = 0; x < image.GetLength(0); x++)
-                {
-                    tempNewImage[x + image.GetLength(0), y + image.GetLength(1)] = image[x, y];
-                }
-            }
+            int total = 0;
+            for (int i = 0; i < image.GetLength(0); i++)
+                for (int j = 0; j < image.GetLength(1); j++)
+                    if (image[i, j]) total++;
 
+            return total;
+        }
 
-            // Get the new pixel values
-            for (int y = 0; y < new_y_size; y++)
+        public static bool[,] enhanceImage(bool[,] image, int iter)
+        {
+            int y_size = image.GetLength(0);
+            int x_size = image.GetLength(1);
+
+            bool[,] newImage = new bool[y_size + 2 * offset, x_size + 2 * offset];
+
+            for (int y = -offset; y < y_size + offset; y++)
             {
-                for (int x = 0; x < new_x_size; x++)
+                for (int x = -offset; x < x_size + offset; x++)
                 {
-                    string binaryString = "";
-                    try { binaryString += toBinary(tempNewImage[y-1, x-1    ]); } catch { binaryString += "0"; }   // Top left
-                    try { binaryString += toBinary(tempNewImage[y-1, x      ]); } catch { binaryString += "0"; }   // Top middle
-                    try { binaryString += toBinary(tempNewImage[y-1, x+1    ]); } catch { binaryString += "0"; }   // Top right
-                    try { binaryString += toBinary(tempNewImage[y  , x-1    ]); } catch { binaryString += "0"; }   // Middle left
-                    try { binaryString += toBinary(tempNewImage[y  , x      ]); } catch { binaryString += "0"; }   // Middle middle
-                    try { binaryString += toBinary(tempNewImage[y  , x+1    ]); } catch { binaryString += "0"; }   // Middle right
-                    try { binaryString += toBinary(tempNewImage[y+1, x-1    ]); } catch { binaryString += "0"; }   // Bottom left
-                    try { binaryString += toBinary(tempNewImage[y+1, x      ]); } catch { binaryString += "0"; }   // Bottom middle
-                    try { binaryString += toBinary(tempNewImage[y+1, x+1    ]); } catch { binaryString += "0"; }   // Bottom right
-                    newImage[y, x] = algorithm[Convert.ToInt32(binaryString, 2)];
+                    string binary = "";
+                    foreach ((int dx, int dy) in getCoords())
+                    {
+                        // Boundary detection
+                        if (iter % 2 == 0)
+                        { // if we are odd, infinite lit, even infinite off.
+                            if (y + dy >= 0 && x + dx >= 0 && y + dy < y_size && x + dx < x_size)
+                            {
+                                if (image[y + dy, x + dx])
+                                    binary += '1';
+                                else
+                                    binary += '0';
+                            }
+                            else
+                            {
+                                binary += '0';
+                            }
+                        }
+                        else
+                        {
+                            if (y + dy >= 2 && x + dx >= 2 && y + dy < y_size && x + dx < x_size)
+                            {
+                                if (image[y + dy, x + dx])
+                                    binary += '1';
+                                else
+                                    binary += '0';
+                            }
+                            else
+                                binary += '1';
+                        }
+                    }
+                    int number = Convert.ToInt32(binary, 2);
+                    newImage[y + offset, x + offset] = algorithm[number] == '#' ? true : false;
                 }
             }
 
             return newImage;
-        }
 
-        static public string toBinary(char c)
-        {
-            if (c == '#')
-                return "1";
-            else
-                return "0";
-        }
-
-        static public void printImage(char[,] grid)
-        {
-            for (int x = 0; x < grid.GetLength(1); x++)
+            List<(int, int)> getCoords()
             {
-                string currLine = "";
-                for (int y = 0; y < grid.GetLength(0); y++)
-                {
-                    if (grid[x, y] == '#')
-                        currLine += grid[x, y];
-                    else
-                        currLine += '.';
-                }
-                Console.WriteLine(currLine);
+                return new List<(int, int)>() {
+                    (-1,-1), (0, -1), (1, -1),
+                    (-1, 0), (0,  0), (1,  0),
+                    (-1, 1), (0,  1), (1,  1)
+                };
             }
+        }
 
-            Console.WriteLine("--------------------");
+        public static void printImage(bool[,] image, int iter)
+        {
+            int y_max = image.GetLength(0);
+            int x_max = image.GetLength(1);
+            Console.WriteLine("--- " + iter);
+            for (int y = 0; y < y_max; y++)
+            {
+                string curr = "";
+                for (int x = 0; x < x_max; x++)
+                {
+                    if (image[y, x])
+                        curr += "#";
+                    else
+                        curr += ".";
+                }
+                Console.WriteLine(curr);
+                
+            }
         }
     }
 }
