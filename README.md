@@ -19,6 +19,10 @@ The links will send you to the corresponding branch!
 * [Day 16: Packet Decoder]
 * [Day 17: Trick Shot]
 * [Day 18: Snailfish]
+* [Day 19: Beacon Scanner] Not finished yet
+* [Day 20: Trench Map] Not finished yet
+- [Day 21: Dirac Dice] Only part 1 finished
+- [Day 22: Reactor Reboot] Only part 1 finished
  
 [Day 1: Sonar Sweep]: https://github.com/BluntKatana/AdventOfCode/tree/1-December
 [Day 2: Dive!]: https://github.com/BluntKatana/AdventOfCode/tree/2-December
@@ -38,10 +42,10 @@ The links will send you to the corresponding branch!
 [Day 16: Packet Decoder]: https://github.com/BluntKatana/AdventOfCode/tree/16-December
 [Day 17: Trick Shot]: https://github.com/BluntKatana/AdventOfCode/tree/17-December
 [Day 18: Snailfish]: https://github.com/BluntKatana/AdventOfCode/tree/18-December
-[19-December]: https://github.com/BluntKatana/AdventOfCode/tree/19-December
-[20-December]: https://github.com/BluntKatana/AdventOfCode/tree/20-December
-[21-December]: https://github.com/BluntKatana/AdventOfCode/tree/21-December
-[22-December]: https://github.com/BluntKatana/AdventOfCode/tree/22-December
+[Day 19: Beacon Scanner]: https://github.com/BluntKatana/AdventOfCode/tree/19-December
+[Day 20: Trench Map]: https://github.com/BluntKatana/AdventOfCode/tree/20-December
+[Day 21: Dirac Dice]: https://github.com/BluntKatana/AdventOfCode/tree/21-December
+[Day 22: Reactor Reboot]: https://github.com/BluntKatana/AdventOfCode/tree/22-December
 [23-December]: https://github.com/BluntKatana/AdventOfCode/tree/23-December
 [24-December]: https://github.com/BluntKatana/AdventOfCode/tree/24-December
 [25-December]: https://github.com/BluntKatana/AdventOfCode/tree/25-December
